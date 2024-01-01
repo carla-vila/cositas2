@@ -1,6 +1,8 @@
 ##################################################################################################
 # Details service
 ##################################################################################################
+
+# Definición del Service para el servicio 'details'
 apiVersion: v1
 kind: Service
 metadata:
@@ -8,14 +10,15 @@ metadata:
   labels:
     app: details
     service: details
+
 spec:
+  type: LoadBalancer
   ports:
   - port: 9080
-    name: http
   selector:
     app: details
-
 ---
+# Definición del Deployment para el servicio 'details'
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -24,7 +27,7 @@ metadata:
     app: details
     version: v1
 spec:
-  replicas: 1
+  replicas: 3 # Estableciendo el factor de replicación en 3
   selector:
     matchLabels:
       app: details
@@ -37,7 +40,7 @@ spec:
     spec:
       containers:
       - name: details
-        image: carlavila2205103/practica_creativa2p3-details:latest   # Replace with your actual image reference
+        image: carlavila2205103/practica_creativa2p3-details:latest # Usando la imagen especificada
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9080
