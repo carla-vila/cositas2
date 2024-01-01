@@ -12,9 +12,9 @@ metadata:
     service: details
 
 spec:
-  type: LoadBalancer
   ports:
   - port: 9080
+    name: http
   selector:
     app: details
 ---
