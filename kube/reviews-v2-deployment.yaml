@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: reviews
-        image: carlavila2205103/practica_creativa2p3-reviews
+        image: carlavila2205103/practica_creativa2p3_reviews
         imagePullPolicy: IfNotPresent
         env:
         - name: LOG_DIR
